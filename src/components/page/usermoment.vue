@@ -1,66 +1,27 @@
 <template>
 <div>
 <el-row :gutter="30">
-  <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6" >
+
+  <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6" class="card" v-for="item in userData">
 <el-row >
     <el-card >
-     <img src="../../assets/1.jpeg" alt="">
-      <div style="padding: 14px;">
-        <span>crazy nice day</span>
+     <img :src="item.img" alt="">
+      <div class="card_content" >
+        <span class="card_title">{{item.title}}</span>
+        <p class="card_info">{{item.info}}</p>
         <div class="bottom clearfix">
-          <time class="time">{{ currentDate }}</time>
-          <el-button type="text" class="button">like</el-button>
+          <time class="time">{{ item.time}}</time>
+          <el-button type="text" class="button">like/  <span>{{item.like}}</span></el-button>
         </div>
       </div>
     </el-card>
+
 </el-row>
   </el-col>
 
-    <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6" >
-<el-row >
-    <el-card >
-     <img src="../../assets/1.jpeg" alt="">
-      <div style="padding: 14px;">
-        <span>crazy nice day</span>
-        <div class="bottom clearfix">
-          <time class="time">{{ currentDate }}</time>
-          <el-button type="text" class="button">like</el-button>
-        </div>
-      </div>
-    </el-card>
 </el-row>
-  </el-col>
 
-    <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6" >
-<el-row >
-    <el-card >
-     <img src="../../assets/1.jpeg" alt="">
-      <div style="padding: 14px;">
-        <span>crazy nice day</span>
-        <div class="bottom clearfix">
-          <time class="time">{{ currentDate }}</time>
-          <el-button type="text" class="button">like</el-button>
-        </div>
-      </div>
-    </el-card>
-</el-row>
-  </el-col>
 
-    <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6" >
-<el-row >
-    <el-card >
-     <img src="../../assets/1.jpeg" alt="">
-      <div style="padding: 14px;">
-        <span>crazy nice day</span>
-        <div class="bottom clearfix">
-          <time class="time">{{ currentDate }}</time>
-          <el-button type="text" class="button">like</el-button>
-        </div>
-      </div>
-    </el-card>
-</el-row>
-  </el-col>
-</el-row>
 
 </div>
 </template>
@@ -68,21 +29,20 @@
 export default {
   data() {
     return {
-      currentDate: new Date()
+      userData:[],
     };
   },
   created(){
-  	axios.get('https://wd7671337397bxyqyc.wilddogio.com').then(res=>{
-  		console.log('111')
-  		console.log(res)
-  	})
+  
   	var config = {
   syncURL: "https://wd7671337397bxyqyc.wilddogio.com" //输入节点 URL
 };
 wilddog.initializeApp(config);
   	var ref = wilddog.sync().ref();
+  	let _this = this;
   	ref.on("value", function(snapshot) {
-    console.log(snapshot.val());
+  		_this.userData = snapshot.val();
+    console.log(_this.userData);
 });
   }
 };
@@ -119,4 +79,10 @@ img{width:100%;height:45vh;}
       clear: both
   }
   .el-card{border-radius:10	px;}
+  .card{ margin-top:20px;
+  	.card_content{padding: 14px;}
+  	.card_title{font-size:18px;}
+.card_info{font-size:14px; color:#ccc;font-weight:600;}
+  
+}
 </style>
