@@ -28,10 +28,11 @@
 	left:10%;
 	box-shadow:0px 1px 10px 0px rgba(0,0,0,.3)
 }
+
 .content{@include wh(100%,auto);
 	min-height:75vh;	
 	padding:5%;
-background:#efefef;
+background:#DBD9D4;
 }
 }
 </style>

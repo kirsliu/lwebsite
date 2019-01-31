@@ -21,7 +21,7 @@
 </script>
 <style lang="scss" scoped>
 	.navbar ul{display:flex; justify-content:flex-start; background:#fff; 
-li{width:20%; padding:1% 2%; color:#666; cursor:pointer; text-align:center; 
+li{width:20%; padding:1% 2%; color:#666; font-size:16px; cursor:pointer; text-align:center; 
   &:hover{ span{color:skyblue} background:rgba(0,0,0,.1)}; 
 }}
 

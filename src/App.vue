@@ -25,4 +25,5 @@ body, div, span, header, footer, nav, section, aside, article, ul, dl, dt, dd, l
      border:none;
      box-sizing:border-box;
 }
+body{min-width:1000px; font:12px/250% "微软雅黑",tahoma,arial,"宋体"}
 </style>

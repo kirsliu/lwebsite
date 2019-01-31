@@ -1,25 +1,24 @@
 <template>
-<div>
-<el-row :gutter="30">
+<div class="m-list">
 
-  <el-col :xs="12" :sm="12" :md="6" :lg="6" :xl="6" class="card" v-for="item in userData">
-<el-row >
-    <el-card >
+    <div class="card" v-for="item in userData" >
      <img :src="item.img" alt="">
       <div class="card_content" >
-        <span class="card_title">{{item.title}}</span>
+      	<p class="card_author">{{item.author}}:</p>
+
+		<section>
+        <p class="card_title">{{item.title}}</p>
         <p class="card_info">{{item.info}}</p>
-        <div class="bottom clearfix">
-          <time class="time">{{ item.time}}</time>
-          <el-button type="text" class="button">like/  <span>{{item.like}}</span></el-button>
+</section>
+
+        <div>
+          <span class="time">{{ item.time}}</span>
+         <!--  <p >like  <span>{{item.like}}</span></p> -->
         </div>
       </div>
-    </el-card>
+    </div>
 
-</el-row>
-  </el-col>
 
-</el-row>
 
 
 
@@ -48,41 +47,40 @@ wilddog.initializeApp(config);
 };
 </script>
 <style lang="scss" scoped>
-img{width:100%;height:45vh;}
+img{width:100%;}
  .time {
+ 	padding:5px 10px;
     font-size: 13px;
     color: #999;
+    background:pink;
+    transform:translateX(10);
+    &:hover{background:blue;  .time{transform:translateX(10);} }
+
+    &:before{
+    	content:"";
+    	display:block;
+    	width:0px;
+		height:0px;
+		border-width:15px;
+		border-style:solid;
+		border-color:transparent pink transparent transparent;
+    	float:left;
+    }
   }
   
-  .bottom {
-    margin-top: 13px;
-    line-height: 12px;
-  }
+.m-list{margin:0 15%; padding:3% 0; background:#f6f5f4; 
+box-shadow:8px 8px 0px rgba(176,174,170,1), 16px 16px 0 rgba(0,0,0,.1); 
 
-  .button {
-    padding: 0;
-    float: right;
-  }
 
-  .image {
-    width: 100%;
-    display: block;
-  }
-
-  .clearfix:before,
-  .clearfix:after {
-      display: table;
-      content: "";
-  }
-  
-  .clearfix:after {
-      clear: both
-  }
-  .el-card{border-radius:10	px;}
-  .card{ margin-top:20px;
+}
+  .card{
+  	padding:15px 10%;
+margin-bottom:30px;
+  	.card_author{color:skyblue; font-size:16px;}
   	.card_content{padding: 14px;}
-  	.card_title{font-size:18px;}
-.card_info{font-size:14px; color:#ccc;font-weight:600;}
+  	section{ margin:10px 0; padding-left:20px; border-left:2px solid #ccc;}
+  	.card_title{font-size:16px; margin-bottom:15px;}
+.card_info{width:70%;  font-size:14px; color:#666;}
   
 }
 </style>
